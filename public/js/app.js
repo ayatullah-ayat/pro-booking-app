@@ -23376,45 +23376,54 @@ __webpack_require__.r(__webpack_exports__);
       columns: 3
     };
   },
+  methods: {
+    bookablesInRow: function bookablesInRow(row) {
+      return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+    },
+    placeHoldersInRow: function placeHoldersInRow(row) {
+      return this.columns - this.bookablesInRow(row).length;
+    }
+  },
   created: function created() {
     var _this = this;
 
     setTimeout(function () {
       _this.bookables = [{
-        title: 'Js Releases ECMA2015',
-        body: 'good for developers',
-        created_at: '2/jun/2018'
+        title: "Js Releases ECMA2015",
+        body: "good for developers",
+        created_at: "2/jun/2018"
       }, {
-        title: 'Python is best for data manipulating',
-        body: 'data science, ai, robotics, data visualization',
-        created_at: '2/jun/2018'
+        title: "Python is best for data manipulating",
+        body: "data science, ai, robotics, data visualization",
+        created_at: "2/jun/2018"
       }, {
-        title: 'PHP IS !DEAD',
-        body: 'Its not possible',
-        created_at: '2/jun/2018'
+        title: "PHP IS !DEAD",
+        body: "Its not possible",
+        created_at: "2/jun/2018"
       }, {
-        title: 'Looking for new career',
-        body: 'cloud based solution',
-        created_at: '2/jun/2018'
+        title: "Looking for new career",
+        body: "cloud based solution",
+        created_at: "2/jun/2018"
       }, {
-        title: 'Js Releases ECMA2015',
-        body: 'good for developers',
-        created_at: '2/jun/2018'
+        title: "Js Releases ECMA2015",
+        body: "good for developers",
+        created_at: "2/jun/2018"
       }, {
-        title: 'Python is best for data manipulating',
-        body: 'data science, ai, robotics, data visualization',
-        created_at: '2/jun/2018'
+        title: "Python is best for data manipulating",
+        body: "data science, ai, robotics, data visualization",
+        created_at: "2/jun/2018"
       }, {
-        title: 'Python is best for data manipulating',
-        body: 'data science, ai, robotics, data visualization',
-        created_at: '2/jun/2018'
+        title: "Python is best for data manipulating",
+        body: "data science, ai, robotics, data visualization",
+        created_at: "2/jun/2018"
       }];
       _this.loader = false;
     }, 2000);
   },
-  unmounted: function unmounted() {
-    console.log('unmounted');
-    console.log(this.bookables);
+  computed: {
+    rows: function rows() {
+      return this.bookables === null ? 0 : Math.ceil(this.bookables.length / this.columns);
+    }
   }
 });
 
@@ -23526,19 +23535,34 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_3 = [_hoisted_2];
 var _hoisted_4 = {
-  key: 1,
-  "class": "row"
+  key: 1
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_BookableItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BookableItem");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.loader ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.bookables, function (item, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_BookableItem, {
-      item: item,
-      key: index
-    }, null, 8
-    /* PROPS */
-    , ["item"]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$data.loader ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.rows, function (row, indx) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "row",
+      key: 'row' + indx
+    }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.bookablesInRow(row), function (item, index) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        "class": "col",
+        key: index
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BookableItem, {
+        item: item
+      }, null, 8
+      /* PROPS */
+      , ["item"])]);
+    }), 128
+    /* KEYED_FRAGMENT */
+    )), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.placeHoldersInRow(row), function (placeholder, indx) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+        key: 'placeholder' + indx,
+        "class": "col"
+      });
+    }), 128
+    /* KEYED_FRAGMENT */
+    ))]);
   }), 128
   /* KEYED_FRAGMENT */
   ))]))]);
@@ -23560,26 +23584,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "col-4"
-};
-var _hoisted_2 = {
   "class": "card mt-2"
 };
-var _hoisted_3 = {
+var _hoisted_2 = {
   "class": "card-body"
 };
-var _hoisted_4 = {
+var _hoisted_3 = {
   "class": "card-title"
 };
-var _hoisted_5 = {
+var _hoisted_4 = {
   "class": "card-text"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.title), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.title), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.body), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.body), 1
   /* TEXT */
-  )])])]);
+  )])]);
 }
 
 /***/ }),
