@@ -23363,11 +23363,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _BookableItem_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableItem.vue */ "./resources/js/bookable/BookableItem.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _BookableItem_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BookableItem.vue */ "./resources/js/bookable/BookableItem.vue");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    BookableItem: _BookableItem_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    BookableItem: _BookableItem_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -23387,38 +23390,21 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    setTimeout(function () {
-      _this.bookables = [{
-        title: "Js Releases ECMA2015",
-        body: "good for developers",
-        created_at: "2/jun/2018"
-      }, {
-        title: "Python is best for data manipulating",
-        body: "data science, ai, robotics, data visualization",
-        created_at: "2/jun/2018"
-      }, {
-        title: "PHP IS !DEAD",
-        body: "Its not possible",
-        created_at: "2/jun/2018"
-      }, {
-        title: "Looking for new career",
-        body: "cloud based solution",
-        created_at: "2/jun/2018"
-      }, {
-        title: "Js Releases ECMA2015",
-        body: "good for developers",
-        created_at: "2/jun/2018"
-      }, {
-        title: "Python is best for data manipulating",
-        body: "data science, ai, robotics, data visualization",
-        created_at: "2/jun/2018"
-      }, {
-        title: "Python is best for data manipulating",
-        body: "data science, ai, robotics, data visualization",
-        created_at: "2/jun/2018"
-      }];
+    window.axios('api/bookables').then(function (result) {
+      return result.data;
+    }).then(function (data) {
+      _this.bookables = data;
+
+      _this.bookables.push({
+        title: 'x',
+        'description': 'x'
+      });
+
       _this.loader = false;
-    }, 2000);
+      console.log(data);
+    })["catch"](function (rej) {
+      return console.log(rej);
+    });
   },
   computed: {
     rows: function rows() {
@@ -23546,7 +23532,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 'row' + indx
     }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.bookablesInRow(row), function (item, index) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
-        "class": "col",
+        "class": "col d-flex align-items-stretch",
         key: index
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BookableItem, {
         item: item
@@ -23584,7 +23570,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "card mt-2"
+  "class": "card mt-2 w-100"
 };
 var _hoisted_2 = {
   "class": "card-body"
@@ -23598,7 +23584,7 @@ var _hoisted_4 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.title), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.body), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.item.description), 1
   /* TEXT */
   )])]);
 }
@@ -52598,6 +52584,18 @@ function useRoute() {
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
