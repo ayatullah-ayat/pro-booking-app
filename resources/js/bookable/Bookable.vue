@@ -1,60 +1,50 @@
 <template>
-  <div>
-    <div v-if="loader">
-      <p>Data is Loading....</p>
-    </div>
-    <div v-else>
-      <div class="row" v-for="(row, indx) in rows" :key="'row' + indx">
-        <div class="col d-flex align-items-stretch" v-for="(item, index) in bookablesInRow(row)" :key="index">
-            <BookableItem :item="item" />
+    <div class="row">
+        <div class="col-md-8">
+            <div v-if="loader">
+                <p>Loading...</p>
+            </div>
+            <div v-else>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ bookable && bookable.title }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ bookable && bookable.description }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div v-for="(placeholder,indx) in placeHoldersInRow(row)" :key="'placeholder' + indx" class="col"></div>
-      </div>
+        <div class="col-md-4">
+            <Availability />
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-import axios from "axios";
-import BookableItem from "./BookableItem.vue";
+import axios from 'axios';
+import Availability from './Availability.vue';
 
 export default {
-  components: {
-    BookableItem
-  },
-  data() {
-    return {
-      bookables: null,
-      loader: true,
-      columns: 3
-    };
-  },
-  methods: {
-    bookablesInRow(row){
-        return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+    components: {
+        Availability
     },
-    placeHoldersInRow(row) {
-        return this.columns - this.bookablesInRow(row).length;
-    }
-  },
-  created() {
-    
-    window.axios('api/bookables')
-        .then(result => result.data)
-        .then(data => {
-          this.bookables = data;
-          this.bookables.push({title: 'x', 'description': 'x'})
-          this.loader = false;
-          console.log(data);
+    data() {
+        return {
+            bookable: null,
+            loader: true
+        }
+    },
+
+    created() {
+        axios('/api/bookables/' + this.$route.params.id)
+        .then(result => {
+            this.bookable = result.data.data
+            this.loader = false
         })
         .catch(rej => console.log(rej))
-  },
-  computed: {
-    rows() {
-      return this.bookables === null
-        ? 0
-        : Math.ceil(this.bookables.length / this.columns);
+        // console.log(this.$route.params.id);
     }
-  }
-};
+}
+
 </script>
