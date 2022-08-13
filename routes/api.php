@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\BookableAvailabilityController;
 use App\Http\Controllers\api\BookableController;
 use App\Models\Bookable;
 use Illuminate\Http\Request;
@@ -22,6 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('bookables', BookableController::class)->only(['index', 'show']);
 
-// Route::get('bookables', [BookableController::class, 'index']);
-
-// Route::get('bookables/{id}', [BookableController::class, 'show']);
+Route::get('bookables/{bookable}/availability', BookableAvailabilityController::class)->name('bookables.availability.show');
