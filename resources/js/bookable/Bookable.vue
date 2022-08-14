@@ -14,6 +14,9 @@
                     </div>
                 </div>
             </div>
+
+            <Review />
+
         </div>
         <div class="col-md-4">
             <Availability />
@@ -24,10 +27,12 @@
 <script>
 import axios from 'axios';
 import Availability from './Availability.vue';
+import Review from './Review.vue';
 
 export default {
     components: {
-        Availability
+        Availability,
+        Review,
     },
     data() {
         return {

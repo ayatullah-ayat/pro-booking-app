@@ -10,14 +10,14 @@ class BookableAvailabilityController extends Controller
 {
     public function __invoke($id, Request $request){
         
-
         $data = $request->validate([
-            'from' => 'required|date_format:Y-m-d|after_or_equal:now',
-            'to' => 'required|date_format:Y-m-d|after_or_equal:from'
+            'from' => 'required',
+            'to' => 'required'
         ]);
     
         $bookable = Bookable::findOrFail($id);
 
-        dd(response()->json($bookable->bookings()->betweenDates($data['from'], $data['to'])->count()));
+        return $bookable->isAvailableFor($data['from'], $data['to']) ?
+                response()->json([], 404) : response()->json([]);
     }
 }
