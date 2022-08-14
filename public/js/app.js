@@ -23779,11 +23779,22 @@ var _hoisted_1 = {
   "class": "mt-3"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5>Review</h5><div class=\"mt-3\"><div class=\"row\"><div class=\"col-6\"><p>PiotrJura</p></div><div class=\"col-6\"><p class=\"text-end\">START RATING</p></div><div class=\"col-6\"><p>Added 5 minuites ago</p></div></div><div class=\"mt-2\"><p>Content of the review</p></div></div>", 2);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Review", -1
+/* HOISTED */
+);
 
-var _hoisted_4 = [_hoisted_2];
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row\"><div class=\"col-6\"><h5>Piotr Jura</h5><p>Added 5 minuites ago</p></div><div class=\"col-6\"><p class=\"text-end\">START RATING</p></div></div><div class=\"mt-2\"><p>Content of the review</p></div>", 2);
+
+var _hoisted_5 = [_hoisted_3];
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(3, function (review, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+      "class": "mt-3",
+      key: index
+    }, _hoisted_5);
+  }), 64
+  /* STABLE_FRAGMENT */
+  ))]);
 }
 
 /***/ }),

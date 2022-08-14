@@ -2,16 +2,14 @@
   <div class="mt-3">
     <h5>Review</h5>
 
-    <div class="mt-3">
+    <div class="mt-3" v-for="(review, index) in 3" :key="index">
       <div class="row">
         <div class="col-6">
-          <p>PiotrJura</p>
+          <h5>Piotr Jura</h5>
+          <p>Added 5 minuites ago</p>
         </div>
         <div class="col-6">
           <p class="text-end">START RATING</p>
-        </div>
-        <div class="col-6">
-          <p>Added 5 minuites ago</p>
         </div>
       </div>
 
