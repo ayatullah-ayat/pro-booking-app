@@ -15,11 +15,11 @@
                 </div>
             </div>
 
-            <Review />
+            <Review :bookableId="$route.params.id" />
 
         </div>
         <div class="col-md-4">
-            <Availability />
+            <Availability :bookableId="$route.params.id" />
         </div>
     </div>
 </template>

@@ -43,6 +43,9 @@
 import axios from 'axios';
 
 export default {
+    props: {
+        bookableId: String,
+    },
     data() {
         return {
             loading: false,
