@@ -1,13 +1,13 @@
 <template>
   <div class="mt-3">
-    <h5>Review</h5>
-
     <div v-if="loading">Loading...</div>
+
     <div v-else class="mt-3" v-for="(review, index) in reviews" :key="'review' + index">
+      <h5>Review</h5>
       <div class="row">
         <div class="col-6">
           <h5>Piotr Jura</h5>
-          <p> {{ review.created_at }} </p>
+          <p> {{ review.created_at | fromNow }} </p>
         </div>
         <div class="col-6">
           <p class="text-end">START RATING</p>
@@ -25,6 +25,8 @@
 
 
 <script>
+
+import moment from "moment";
 export default {
   props: {
     bookableId: String, 
@@ -43,6 +45,11 @@ export default {
     }).then(() => {
       this.loading = false
     })
+  },
+  filters: {
+    fromNow(value) {
+      return moment(value).fromNow();
+    }
   }
 
 }
