@@ -25,8 +25,6 @@
 
 
 <script>
-
-import moment from "moment";
 export default {
   props: {
     bookableId: String, 
@@ -46,12 +44,7 @@ export default {
       this.loading = false
     })
   },
-  filters: {
-    fromNow(value) {
-      return moment(value).fromNow();
-    }
-  }
-
+ 
 }
 
 </script>
